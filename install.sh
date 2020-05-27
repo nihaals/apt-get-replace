@@ -1,6 +1,8 @@
 #!/bin/bash
 
-if [[ "$1" -e "--dev" ]]; then
+# bash <(curl -s https://raw.githubusercontent.com/nihaals/apt-get-replace/master/install.sh)
+
+if [[ "$1" == "--dev" ]]; then
   branch="dev"
   shift 1
 else
@@ -17,3 +19,5 @@ wget -qO "/opt/apt-get-replace/apt-cache" \
 chmod +x -R /opt/apt-get-replace/
 
 printf "\nexport PATH=\"/opt/apt-get-replace:\$PATH\"" | tee -a ~/.profile > /dev/null
+
+echo "Done"
