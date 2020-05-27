@@ -5,35 +5,35 @@ exists() {
 }
 
 apt_get_install() {
-  command apt install "$@"
+  command "/usr/bin/apt" install "$@"
 }
 
 apt_get_remove() {
-  command apt remove "$@"
+  command "/usr/bin/apt" remove "$@"
 }
 
 apt_get_update() {
-  command apt update "$@"
+  command "/usr/bin/apt" update "$@"
 }
 
 apt_get_upgrade() {
-  command apt upgrade "$@"
+  command "/usr/bin/apt" upgrade "$@"
 }
 
 apt_cache_search() {
-  command apt search "$@"
+  command "/usr/bin/apt" search "$@"
 }
 
 apt_cache_show() {
-  command apt show "$@"
+  command "/usr/bin/apt" show "$@"
 }
 
 apt_get_autoremove() {
-  command apt autoremove "$@"
+  command "/usr/bin/apt" autoremove "$@"
 }
 
 apt_get_purge() {
-  command apt purge "$@"
+  command "/usr/bin/apt" purge "$@"
 }
 
 cmd=$1
@@ -42,5 +42,10 @@ shift 2
 if exists "${cmd/-/_}_${subcmd}"; then
   "${cmd/-/_}_$subcmd" "$@"
 else
+  case $cmd in
+    apt-get)
+      cmd="/usr/bin/apt-get"
+    apt-cache)
+      cmd="/usr/bin/apt-cache"
   command "${cmd}" "${subcmd}" "$@"
 fi
