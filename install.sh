@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# bash <(curl -s https://raw.githubusercontent.com/nihaals/apt-get-replace/master/install.sh)
+# curl -s "https://raw.githubusercontent.com/nihaals/apt-get-replace/master/install.sh" | bash -s
 
 if [[ "$1" == "--dev" ]]; then
   branch="dev"
