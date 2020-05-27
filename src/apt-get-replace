@@ -1,0 +1,46 @@
+#!/bin/bash
+
+exists() {
+  [ `type -t $1`"" == 'function' ]
+}
+
+apt_get_install() {
+  command apt install "$@"
+}
+
+apt_get_remove() {
+  command apt remove "$@"
+}
+
+apt_get_update() {
+  command apt update "$@"
+}
+
+apt_get_upgrade() {
+  command apt upgrade "$@"
+}
+
+apt_cache_search() {
+  command apt search "$@"
+}
+
+apt_cache_show() {
+  command apt show "$@"
+}
+
+apt_get_autoremove() {
+  command apt autoremove "$@"
+}
+
+apt_get_purge() {
+  command apt purge "$@"
+}
+
+cmd=$1
+subcmd=$2
+shift 2
+if exists "${cmd/-/_}_${subcmd}"; then
+  "${cmd/-/_}_$subcmd" "$@"
+else
+  command "${cmd}" "${subcmd}" "$@"
+fi

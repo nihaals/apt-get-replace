@@ -1,0 +1,3 @@
+#!/bin/bash
+
+"/opt/apt-get-replace/_apt-get-replace" "apt-get" "$@"
