@@ -9,6 +9,8 @@ else
   branch="master"
 fi
 
+mkdir -p "/opt/apt-get-replace"
+
 wget -qO "/opt/apt-get-replace/_apt-get-replace" \
   "https://raw.githubusercontent.com/nihaals/apt-get-replace/${branch}/src/apt-get-replace"
 wget -qO "/opt/apt-get-replace/apt-get" \
