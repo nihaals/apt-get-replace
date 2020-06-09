@@ -45,7 +45,10 @@ else
   case $cmd in
     apt-get)
       cmd="/usr/bin/apt-get"
+      ;;
     apt-cache)
       cmd="/usr/bin/apt-cache"
+      ;;
+  esac
   command "${cmd}" "${subcmd}" "$@"
 fi
