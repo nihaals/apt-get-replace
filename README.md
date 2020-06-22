@@ -16,8 +16,8 @@ This allows it to work for any shell. It is much simpler if your shell supports 
 # "Alias Expansion"
 alias sudo='sudo '
 
-alias -- apt-get='"${HOME}/apt-get-replace" apt-get'
-alias -- apt-cache='"${HOME}/apt-get-replace" apt-cache'
+alias -- apt-get='"/opt/apt-get-replace/apt-get-replace/bin/apt-get"'
+alias -- apt-cache='"/opt/apt-get-replace/apt-get-replace/bin/apt-cache"'
 ```
 
 Simply add this to `~/.bash_aliases`.

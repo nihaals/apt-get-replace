@@ -9,17 +9,23 @@ else
   branch="master"
 fi
 
-mkdir -p "/opt/apt-get-replace"
+base_raw="https://raw.githubusercontent.com/nihaals/apt-get-replace"
 
-wget -qO "/opt/apt-get-replace/_apt-get-replace" \
-  "https://raw.githubusercontent.com/nihaals/apt-get-replace/${branch}/src/apt-get-replace"
-wget -qO "/opt/apt-get-replace/apt-get" \
-  "https://raw.githubusercontent.com/nihaals/apt-get-replace/${branch}/src/apt-get"
-wget -qO "/opt/apt-get-replace/apt-cache" \
-  "https://raw.githubusercontent.com/nihaals/apt-get-replace/${branch}/src/apt-cache"
+mkdir -p "/opt/apt-get-replace/bin"
+
+wget -qO "/opt/apt-get-replace/apt-get-replace" \
+  "${base_raw}/${branch}/src/apt-get-replace"
+wget -qO "/opt/apt-get-replace/bin/apt-get" \
+  "${base_raw}/${branch}/src/apt-get"
+wget -qO "/opt/apt-get-replace/bin/apt-cache" \
+  "${base_raw}/${branch}/src/apt-cache"
 
 chmod +x -R /opt/apt-get-replace/
 
-printf "\nexport PATH=\"/opt/apt-get-replace:\$PATH\"" | tee -a ~/.profile > /dev/null
+printf "\nexport PATH=\"/opt/apt-get-replace/bin:\$PATH\"\n" | tee -a ~/.profile > /dev/null
+
+# if [[ -d "~/.config/fish" ]]; then
+#   printf "\nset -gx PATH /opt/apt-get-replace/bin $PATH\n" | tee -a ~/.config/fish/config.fish > /dev/null
+# fi
 
 echo "Done"
